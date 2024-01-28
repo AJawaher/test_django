@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Execute Task</title>
+    <!-- Add any additional styles or meta tags here -->
+</head>
+<body>
+
+<div style="max-width: 600px; margin: auto;">
+    <h2 style="text-align: center;">Execute Task</h2>
+
+    <form method="post" action="{% url 'execute_task' %}">
+        {% csrf_token %}
+
+        <div style="margin-bottom: 10px;">
+            <label for="id" style="display: block; margin-bottom: 5px;">ID:</label>
+            <input type="text" name="id" required style="width: 100%; padding: 8px;">
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="text" style="display: block; margin-bottom: 5px;">Text:</label>
+            <input type="text" name="text" required style="width: 100%; padding: 8px;">
+        </div>
+
+        <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
+

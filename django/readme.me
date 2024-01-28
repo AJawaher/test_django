@@ -1,0 +1,108 @@
+# Producer-Consumer Django Application
+
+This Django application demonstrates a simple producer-consumer architecture using Django, Celery, and Django REST Framework.
+
+## Producer Project
+
+### Overview
+
+The Producer project is responsible for handling the execution of tasks, sending messages to the Consumer, and receiving webhook notifications.
+
+### Components
+
+1. **Views:**
+   - **ExecuteTaskView:** A Django view for executing tasks. It provides a form to submit task details.
+
+   - **WebhookReceiverView:** An API view to receive webhook notifications from the Consumer, update message results in the database.
+
+2. **Tasks:**
+   - **send_message_to_consumer:** Celery task to send a message to the Consumer for processing.
+
+### How to Run
+
+1. Set up the Django project:
+   ```bash
+   cd ProducerProject
+   pip install -r requirements.txt
+
+Certainly! Below is an example README.md file that you can use as a starting point to explain the Producer and Consumer projects in your Django application. Customize it according to your specific project details.
+
+
+# Producer-Consumer Django Application
+
+This Django application demonstrates a simple producer-consumer architecture using Django, Celery, and Django REST Framework.
+
+## Producer Project
+
+### Overview
+
+The Producer project is responsible for handling the execution of tasks, sending messages to the Consumer, and receiving webhook notifications.
+
+### Components
+
+1. **Views:**
+   - **ExecuteTaskView:** A Django view for executing tasks. It provides a form to submit task details.
+
+   - **WebhookReceiverView:** An API view to receive webhook notifications from the Consumer, update message results in the database.
+
+2. **Tasks:**
+   - **send_message_to_consumer:** Celery task to send a message to the Consumer for processing.
+
+### How to Run
+
+1. Set up the Django project:
+   ```bash
+   cd ProducerProject
+   pip install -r requirements.txt
+Run migrations and start the Django development server:
+
+
+
+python manage.py migrate
+python manage.py runserver
+Access the application at http://127.0.0.1:8000.
+
+Use the /execute_task/ endpoint to submit tasks.
+
+Consumer Project
+Overview
+The Consumer project processes messages received from the Producer, performs task execution, and sends results back to the Producer.
+
+Components
+Tasks:
+process_message: Celery task to process a message, reverse its text, and send the result back to the Producer.
+How to Run
+Set up the Django project:
+
+
+cd ConsumerProject
+pip install -r requirements.txt
+Run migrations and start the Celery worker:
+
+
+python manage.py migrate
+celery -A ConsumerProject worker -l info
+Access the application at http://127.0.0.1:8001.
+
+The Consumer automatically processes messages sent by the Producer and sends results back.
+
+Communication Between Producer and Consumer
+The Producer and Consumer communicate through Celery. The Producer schedules tasks, and the Consumer processes them asynchronously.
+
+Project Structure
+
+
+ProducerProject/
+|-- ProducerApp/
+|   |-- templates/
+|   |   |-- execute_task.html
+|   |-- views.py
+|   |-- tasks.py
+|   |-- ...
+|-- ...
+
+ConsumerProject/
+|-- ConsumerApp/
+|   |-- tasks.py
+|   |-- ...
+|-- ...

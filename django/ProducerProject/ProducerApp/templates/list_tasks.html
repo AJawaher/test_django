@@ -1,0 +1,8 @@
+{% for task in all_tasks %}
+<!--    <p>ID: {{ task.id }}</p>-->
+    <p>Text: {{ task.text }}</p>
+    <p>Timestamp: {{ task.timestamp }}</p>
+    <hr>
+{% empty %}
+    <p>No recent tasks.</p>
+{% endfor %}
